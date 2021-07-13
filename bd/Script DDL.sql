@@ -15,7 +15,7 @@ create table tiposUsuarios
 create table instituicao
 (
 	idInstituicao	INT PRIMARY KEY IDENTITY,
-	idTipoUsuarios INT FOREIGN KEY REFERENCES tiposUsuarios(idTipoUsuario),
+	idTiposUsuarios INT FOREIGN KEY REFERENCES tiposUsuarios(idTipoUsuario),
 	nomeInstituicao VARCHAR(200) UNIQUE NOT NULL
 );
 
@@ -45,7 +45,13 @@ create table livros
 (
 	idLivros	INT PRIMARY KEY IDENTITY,
 	idCategoria INT FOREIGN KEY REFERENCES categorias(idCategoria),
-	idAutor		INT FOREIGN KEY REFERENCES autor(idAutor)
+	idAutor		INT FOREIGN KEY REFERENCES autor(idAutor),
+	idInstituicao	INT FOREIGN KEY REFERENCES instituicao(idInstituicao),
+	nomeLivro VARCHAR(200) UNIQUE NOT NULL,
+	sinopse VARCHAR(200) UNIQUE NOT NULL,
+	dataPublicacao	DATE,
+	preco	SMALLMONEY
+
 );
 
 
@@ -59,3 +65,6 @@ select * from tiposUsuarios;
 
 
 
+drop table livros;
+drop table instituicao;
+drop table categorias;

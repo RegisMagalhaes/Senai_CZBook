@@ -1,5 +1,5 @@
 --Seleciona o banco CZBOOKS
-USE czbooks;
+USE senai_czbooks;
 GO
 
 -- Insere os tipos de Usuarios
@@ -10,9 +10,9 @@ VALUES						('ADMINISRADOR'),
 							('AUTOR')
 GO
 
-INSERT INTO	instituicao (nomeInstituicao)
-VALUES					('CZBooks'),
-						('SENAI')
+INSERT INTO	instituicao (idTiposUsuarios, nomeInstituicao)
+VALUES					(1,'CZBooks'),
+						(1,'SENAI')
 GO
 
 INSERT INTO categorias (nomeCategoria)
@@ -31,12 +31,12 @@ VALUES				(1,'REGIS LEANDRO DA SILVA R MAGALHÃES', 'regis.expertmail@gmail.com',
 					(3, 'ANGELO ARMANDO ONISTO', 'angearm@uol.com.br', 'cobre=29')
 GO
 
-INSERT INTO livros(idCategoria, idAutor, nomeLivro, sinopse,  dataPublicacao, preco)
-values			  (1,1,'Concreto Armado eu te amo', 'Projete e...','1991-11-17',43.99),
-				  (1,2, 'Node JS', 'Aplicações em...','2020-02-13',87.50),
-				  (1,1,'REACT Aprenda praticando','Construa...', '1993-07-14',78.00),
-				  (1,2, 'Python', 'A linguagem ...','1945-04-02',65.00),
-				  (1,3, 'Planejamento de obras', 'Administre...','2020-10-29',30.70)
+INSERT INTO livros(idCategoria,idInstituicao, idAutor, nomeLivro, sinopse,  dataPublicacao, preco)
+VALUES			  (1,1,1,'Concreto Armado eu te amo', 'Projete e...','17/11/1991',78.93),
+				  (1,2,2, 'Node JS', 'Aplicações em...','13/02/2020',87.50),
+				  (1,1,1,'REACT Aprenda praticando','Construa...', '14/07/1993',78.99),
+				  (1,2,2, 'Python', 'A linguagem ...','02/04/2002',65.00),
+				  (1,2,3, 'Planejamento de obras', 'Administre...','29/10/2015',307.80)
 GO
 
 INSERT INTO autor(idUsuario, nomeAutor)
@@ -44,3 +44,4 @@ VALUES			 (3, 'Angelo Armando Onisto'),
 				 (3, 'Denis W C P da Silva'),
 				 (3, 'Sergio Berluschini')
 GO
+
